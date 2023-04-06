@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    function:
+      definition: consumeTransaction
+    stream:
+      rabbit:
+        bindings:
+          consumeTransaction-in-0:
+            consumer:
+              transacted: true
+      bindings:
+        consumeTransaction-in-0:
+          destination: Transaction
+          group: New
+  rabbitmq:
+    username: user
+    password: password
+server:
+  port: 8000
