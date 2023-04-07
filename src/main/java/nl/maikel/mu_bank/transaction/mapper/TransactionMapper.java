@@ -20,6 +20,7 @@ public interface TransactionMapper {
         newTransaction.setTransactionType(transactionEvent.getTransactionType());
         BigDecimal sum = BigDecimal.ZERO;
         if (transaction != null && transaction.getUpdatedBalance() != null) {
+            newTransaction.setId(transaction.getId());
             sum = sum.add(transactionEvent.getAmount()).add(transaction.getUpdatedBalance());
         } else {
             sum = sum.add(transactionEvent.getAmount());
