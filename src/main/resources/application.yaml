@@ -1,0 +1,24 @@
+spring:
+  cloud:
+    function:
+      definition: createTransaction
+    stream:
+      rabbit:
+        bindings:
+          createTransaction-in-0:
+            consumer:
+              transacted: true
+          createTransaction-out-0:
+            producer:
+              transacted: true
+      bindings:
+        createTransaction-in-0:
+          destination: Transaction
+          group: New
+        createTransaction-out-0:
+          destination: Processed
+  rabbitmq:
+    username: user
+    password: password
+server:
+  port: 8000
