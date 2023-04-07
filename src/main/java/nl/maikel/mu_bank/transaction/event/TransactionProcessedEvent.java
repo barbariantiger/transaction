@@ -1,14 +1,13 @@
 package nl.maikel.mu_bank.transaction.event;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
-@AllArgsConstructor
 public class TransactionProcessedEvent {
+    private String transactionId;
     private EventType type;
     private TransactionType transactionType;
     private String accountId;
