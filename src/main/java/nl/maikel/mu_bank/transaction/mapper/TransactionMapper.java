@@ -11,7 +11,9 @@ import org.mapstruct.factory.Mappers;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Mapper(componentModel = "spring")
+import static nl.maikel.mu_bank.transaction.constants.TransactionConstants.MAPPER_COMPONENT_MODEL;
+
+@Mapper(componentModel = MAPPER_COMPONENT_MODEL)
 public interface TransactionMapper {
     TransactionMapper INSTANCE = Mappers.getMapper(TransactionMapper.class);
     default Transaction transactionEventToTransaction(TransactionEvent transactionEvent, Transaction transaction) {

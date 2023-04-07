@@ -8,10 +8,12 @@ import org.springframework.data.annotation.CreatedDate;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import static nl.maikel.mu_bank.transaction.constants.TransactionConstants.TRANSACTION_TABLE;
+
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-@Entity(name = "TRANSACTION")
+@Entity(name = TRANSACTION_TABLE)
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

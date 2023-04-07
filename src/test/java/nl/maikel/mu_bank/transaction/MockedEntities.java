@@ -9,16 +9,18 @@ import nl.maikel.mu_bank.transaction.model.Transaction;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import static nl.maikel.mu_bank.transaction.TestConstants.TEST_ACCOUNT_ID;
+
 public class MockedEntities {
 
     public static TransactionEvent getTransactionEvent() {
-        return new TransactionEvent(EventType.CREATE_TRANSACTION, TransactionType.DEPOSIT, BigDecimal.ONE, "test_account_id");
+        return new TransactionEvent(EventType.CREATE_TRANSACTION, TransactionType.DEPOSIT, BigDecimal.ONE, TEST_ACCOUNT_ID);
     }
 
     public static Transaction getFirstTransaction() {
         var transaction = new Transaction();
         transaction.setTransactionType(TransactionType.DEPOSIT);
-        transaction.setAccountId("test_account_id");
+        transaction.setAccountId(TEST_ACCOUNT_ID);
         transaction.setAmount(BigDecimal.ONE);
         transaction.setUpdatedBalance(BigDecimal.ONE);
         transaction.setCreatedOn(LocalDateTime.now());

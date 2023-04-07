@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static nl.maikel.mu_bank.transaction.MockedEntities.*;
+import static nl.maikel.mu_bank.transaction.TestConstants.CREATED_ON;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
@@ -15,30 +16,26 @@ class TransactionApplicationTests {
 	private TransactionMapper transactionMapper;
 
 	@Test
-	void contextLoads() {
-	}
-
-	@Test
-	public void givenFistTransactionWhenTransactionEventToTransactionThenTransactionEvent() {
+	void givenFistTransactionWhenTransactionEventToTransactionThenTransactionEvent() {
 		var transaction = this.transactionMapper.transactionEventToTransaction(getTransactionEvent(), null);
-		assertThat(transaction).usingRecursiveComparison().ignoringFields("createdOn").isEqualTo(getFirstTransaction());
+		assertThat(transaction).usingRecursiveComparison().ignoringFields(CREATED_ON).isEqualTo(getFirstTransaction());
 	}
 
 	@Test
-	public void givenSecondTransactionWhenTransactionEventToTransactionThenTransactionEvent() {
+	void givenSecondTransactionWhenTransactionEventToTransactionThenTransactionEvent() {
 		var transaction = this.transactionMapper.transactionEventToTransaction(getTransactionEvent(), getFirstTransaction());
-		assertThat(transaction).usingRecursiveComparison().ignoringFields("createdOn").isEqualTo(getSecondTransaction());
+		assertThat(transaction).usingRecursiveComparison().ignoringFields(CREATED_ON).isEqualTo(getSecondTransaction());
 	}
 
 	@Test
-	public void givenFistTransactionWhenTransactionToTransactionProcessedEventThenTransactionProcessedEvent() {
+	void givenFistTransactionWhenTransactionToTransactionProcessedEventThenTransactionProcessedEvent() {
 		var transaction = this.transactionMapper.transactionToTransactionProcessedEvent(getFirstTransaction());
-		assertThat(transaction).usingRecursiveComparison().ignoringFields("createdOn").isEqualTo(getFirstTransactionProcessedEvent());
+		assertThat(transaction).usingRecursiveComparison().ignoringFields(CREATED_ON).isEqualTo(getFirstTransactionProcessedEvent());
 	}
 
 	@Test
-	public void givenSecondTransactionWhenTransactionToTransactionProcessedEventThenTransactionProcessedEvent() {
+	void givenSecondTransactionWhenTransactionToTransactionProcessedEventThenTransactionProcessedEvent() {
 		var transaction = this.transactionMapper.transactionToTransactionProcessedEvent(getSecondTransaction());
-		assertThat(transaction).usingRecursiveComparison().ignoringFields("createdOn").isEqualTo(getSecondTransactionProcessedEvent());
+		assertThat(transaction).usingRecursiveComparison().ignoringFields(CREATED_ON).isEqualTo(getSecondTransactionProcessedEvent());
 	}
 }
