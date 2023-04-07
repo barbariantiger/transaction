@@ -1,3 +1,4 @@
+
 spring:
   cloud:
     function:
@@ -20,5 +21,10 @@ spring:
   rabbitmq:
     username: user
     password: password
+  jpa:
+    show-sql: true
+  h2:
+    console:
+      enabled: true
 server:
   port: 8000

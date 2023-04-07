@@ -29,7 +29,7 @@ public class TransactionFunction {
     @Bean
     public Function<TransactionEvent, TransactionProcessedEvent> createTransaction() {
         return event -> {
-            Transaction transaction = this.transactionRepository.findTransactionByCreatedOnMax();
+            Transaction transaction = this.transactionRepository.findTransactionByCreatedOnMax(event.getAccountId());
             return switch (event.getTransactionType()) {
                 case DEPOSIT -> processDeposit(event, transaction);
             };
