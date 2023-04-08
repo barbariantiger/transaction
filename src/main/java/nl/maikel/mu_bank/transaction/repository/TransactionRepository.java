@@ -9,5 +9,5 @@ import static nl.maikel.mu_bank.transaction.constants.TransactionConstants.GET_L
 public interface TransactionRepository extends CrudRepository<Transaction, String> {
 
     @Query(value = GET_LAST_TRANSACTION, nativeQuery = true)
-    Transaction findTransactionByCreatedOnMax();
+    Transaction findTransactionByCreatedOnMax(String accountId);
 }
